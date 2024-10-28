@@ -1,0 +1,20 @@
+[0;1;31m×[0m httpd.service - The Apache HTTP Server
+     Loaded: loaded (]8;;file://localhost.localdomain/usr/lib/systemd/system/httpd.service/usr/lib/systemd/system/httpd.service]8;;; [0;1;38;5;185mdisabled[0m; preset: [0;1;38;5;185mdisabled[0m)
+    Drop-In: /usr/lib/systemd/system/httpd.service.d
+             └─]8;;file://localhost.localdomain/usr/lib/systemd/system/httpd.service.d/php-fpm.confphp-fpm.conf]8;;
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Tue 2024-10-15 08:31:08 EDT; 48s ago
+       Docs: ]8;;man:httpd.service(8)man:httpd.service(8)]8;;
+    Process: 6422 ExecStart=/usr/sbin/httpd $OPTIONS -DFOREGROUND [0;1;31m(code=exited, status=1/FAILURE)[0m
+   Main PID: 6422 (code=exited, status=1/FAILURE)
+     Status: "Reading configuration..."
+        CPU: 68ms
+
+Oct 15 08:31:08 localhost.localdomain systemd[1]: Starting The Apache HTTP Server...
+Oct 15 08:31:08 localhost.localdomain httpd[6422]: AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using localhost.localdomain. Set the 'ServerName' directive globally to suppress this message
+Oct 15 08:31:08 localhost.localdomain httpd[6422]: (98)Address already in use: AH00072: make_sock: could not bind to address [::]:80
+Oct 15 08:31:08 localhost.localdomain httpd[6422]: (98)Address already in use: AH00072: make_sock: could not bind to address 0.0.0.0:80
+Oct 15 08:31:08 localhost.localdomain httpd[6422]: no listening sockets available, shutting down
+Oct 15 08:31:08 localhost.localdomain httpd[6422]: AH00015: Unable to open logs
+Oct 15 08:31:08 localhost.localdomain systemd[1]: [0;1;39m[0;1;31m[0;1;39mhttpd.service: Main process exited, code=exited, status=1/FAILURE[0m
+Oct 15 08:31:08 localhost.localdomain systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mhttpd.service: Failed with result 'exit-code'.[0m
+Oct 15 08:31:08 localhost.localdomain systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start The Apache HTTP Server.[0m
