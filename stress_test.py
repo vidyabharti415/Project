@@ -1,63 +1,47 @@
-import psutil
 import os
-import smtplib
-from email.mime.text import MIMEText
 
-# Function to send email notifications
-def send_email(subject, message):
-    sender_email = "bhartividya415@gmail.com"
-    receiver_email = "bhartividya415@gmail.com"
-    msg = MIMEText(message)
-    msg['Subject'] = subject
-    msg['From'] = sender_email
-    msg['To'] = receiver_email
-    with smtplib.SMTP('smtp.gmail.com', 587) as server:
-        server.starttls()
-        server.login(sender_email, "uska dapb dtnb llqq")
-        server.send_message(msg)
+def memory_stress():
+    print("Running Memory Stress Test...")
+    os.system("stress --vm 2 --vm-bytes 80% --timeout 60s")
 
-# Stress test functions
-def memory_stress_test():
-    # Memory stress logic
-    pass
+def disk_stress():
+    print("Running Disk Stress Test...")
+    os.system("stress --hdd 2 --timeout 60s")
 
-def disk_stress_test():
-    # Disk stress logic
-    pass
+def network_stress():
+    print("Running Network Stress Test...")
+    os.system("iperf3 -c <vm_2_IP>")  # Ensure iperf3 is running on vm_2 as server
 
-def network_stress_test():
-    # Network stress logic
-    pass
+def cpu_stress():
+    print("Running CPU Stress Test...")
+    os.system("stress --cpu 4 --timeout 60s")
 
-def cpu_stress_test():
-    # CPU stress logic
-    pass
+def mysql_stress():
+    print("Running MySQL Stress Test...")
+    os.system("mysqlslap --concurrency=5 --iterations=10 --query=\"SELECT BENCHMARK(1000000,ENCODE('hello','goodbye'));\"")
 
-def mysql_stress_test():
-    # MySQL stress logic
-    pass
-
-while True:
-    print("Select an option:")
+def main_menu():
+    print("Select the stress test:")
     print("1. Memory Stress Testing")
     print("2. Disk Stress Testing")
     print("3. Network Stress Testing")
     print("4. CPU Stress Testing")
     print("5. MySQL Stress Testing")
-    print("6. Exit")
-    choice = input("Enter your choice: ")
-    
-    if choice == '1':
-        memory_stress_test()
-    elif choice == '2':
-        disk_stress_test()
-    elif choice == '3':
-        network_stress_test()
-    elif choice == '4':
-        cpu_stress_test()
-    elif choice == '5':
-        mysql_stress_test()
-    elif choice == '6':
-        break
+    choice = int(input("Enter choice: "))
+
+    if choice == 1:
+        memory_stress()
+    elif choice == 2:
+        disk_stress()
+    elif choice == 3:
+        network_stress()
+    elif choice == 4:
+        cpu_stress()
+    elif choice == 5:
+        mysql_stress()
     else:
-        print("Invalid choice.")
+        print("Invalid choice!")
+
+if __name__ == "__main__":
+    main_menu()
+
